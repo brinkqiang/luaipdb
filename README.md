@@ -40,7 +40,52 @@ linux
 cd bin/relwithdebinfo
 ./lua ../script/main.lua
 ```
+
+```lua
+-- lua script
+
+local luaipdb = require("luaipdb")
+
+local db_file = "ipip.ipdb"
+print(luaipdb.City)
+local db = luaipdb.City.new(db_file)
+
+-- Print database information
+print("IPv4 Support:", db:IsIPv4Support())
+print("IPv6 Support:", db:IsIPv6Support())
+print("Build Time:", db:BuildTime())
+
+print("Languages:")
+for _, lang in ipairs(db:Languages()) do
+print(lang, " ")
+end
+print()
+
+print("Fields:")
+for _, field in ipairs(db:Fields()) do
+print(field, " ")
+end
+print()
+
+-- Look up IP address information
+local ip = "27.190.24.0"
+local country = "CN"
+
+local results = db:Find(ip, country)
+print(table.concat(results, ", "))
+
+local map_results = db:FindMap(ip, country)
+for key, value in pairs(map_results) do
+print(key .. ": " .. value .. ", ")
+end
+print()
+
+local info = db:FindInfo("127.0.0.1", country)
+print(info:str())
+
+```
+
+
 ## Contacts
-[![Join the chat](https://badges.gitter.im/brinkqiang/luaipdb/Lobby.svg)](https://gitter.im/brinkqiang/luaipdb)
 
 ## Thanks
