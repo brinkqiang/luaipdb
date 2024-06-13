@@ -85,7 +85,51 @@ print(info:str())
 
 ```
 
+output
+```
+table: 00000193F41DE200
+IPv4 Support:   true      
+IPv6 Support:   false     
+Build Time:     1562137969
+Languages:
+CN
 
+Fields:
+country_name
+region_name
+city_name
+
+中国, 河北, 唐山
+city_name: 唐山,
+country_name: 中国,       
+region_name: 河北,        
+
+country_name: 本机地址
+region_name: 本机地址
+city_name:
+owner_domain:
+isp_domain:
+latitude:
+longitude:
+timezone:
+utc_offset:
+china_admin_code:
+idd_code:
+country_code:
+continent_code:
+idc:
+base_station:
+country_code3:
+european_union:
+currency_code:
+currency_name:
+anycast:
+line:
+route:
+asn:
+area_code:
+usage_type:
+```
 ## Contacts
 
 ## Thanks
