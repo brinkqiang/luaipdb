@@ -31,6 +31,7 @@ ADD_CUSTOM_COMMAND(
     PRE_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
     ${CMAKE_CURRENT_SOURCE_DIR}/config/lua_dkm_debug.json
+    ${CMAKE_CURRENT_SOURCE_DIR}//db/ipip.ipdb
     $<TARGET_FILE_DIR:luaipdb>
 )
 ENDIF(WIN32)

@@ -9,6 +9,7 @@
 #include <vector>
 #include <map>
 #include <cstdint>
+
 namespace ipdb {
 #define  IPv4  0x01
 #define  IPv6  0x02
@@ -27,6 +28,7 @@ namespace ipdb {
 	typedef unsigned char u_char;
     class MetaData {
     public:
+// export_begin
         uint64_t Build{};             //`json:"build"`
         uint16_t IPVersion{};         //`json:"ip_version"`
         map<string, int> Languages; //`json:"languages"`
@@ -34,6 +36,7 @@ namespace ipdb {
         int TotalSize{};              //`json:"total_size"`
         vector<string> Fields;      //`json:"fields"`
         void Parse(const string &json);
+// export_end        
     };
 
     class Reader {
@@ -54,6 +57,7 @@ namespace ipdb {
         vector<string> find1(const string &addr, const string &language);
 
     public:
+// export_begin    
         ~Reader();
 
         explicit Reader(const string &file);
@@ -71,6 +75,7 @@ namespace ipdb {
         vector<string> Languages();
 
         vector<string> Fields() const;
+// export_end
     };
 
     class ASNInfo {
@@ -82,6 +87,7 @@ namespace ipdb {
         string type;
         string domain;
     public:
+// export_begin
         explicit ASNInfo(const vector<string> &data, const vector<string> &fields);
 
         string GetAsn();
@@ -99,6 +105,7 @@ namespace ipdb {
         string GetDomain();
 
         string str();
+// export_end        
     };
 
     class DistrictInfo {
@@ -111,6 +118,7 @@ namespace ipdb {
         string latitude;
         string longitude;
     public:
+// export_begin    
         explicit DistrictInfo(const vector<string> &data, const vector<string> &fields);
 
         string GetCountryName();
@@ -130,13 +138,16 @@ namespace ipdb {
         string GetLongitude();
 
         string str();
+// export_end
     };
 
     class District : public Reader {
     public:
+// export_begin    
         explicit District(const string &file);
 
         DistrictInfo FindInfo(const string &addr, const string &language);
+// export_end
     };
 
     class CityInfo {
@@ -168,6 +179,7 @@ namespace ipdb {
         string area_code;
         string usage_type;
     public:
+// export_begin
         explicit CityInfo(const vector<string> &data, const vector<string> &fields);
 
         string GetCountryName();
@@ -225,13 +237,16 @@ namespace ipdb {
         string GetUsageType();
 
         string str();
+// export_end
     };
 
     class City : public Reader {
     public:
+// export_begin
         explicit City(const string &file);
 
         CityInfo FindInfo(const string &addr, const string &language);
+// export_end
     };
 
     class BaseStationInfo {
@@ -242,6 +257,7 @@ namespace ipdb {
         string isp_domain;
         string base_station;
     public:
+// export_begin    
         explicit BaseStationInfo(const vector<string> &data, const vector<string> &fields);
 
         string GetCountryName();
@@ -257,13 +273,16 @@ namespace ipdb {
         string GetBaseStation();
 
         string str();
+// export_end        
     };
 
     class BaseStation : public Reader {
     public:
+// export_begin
         explicit BaseStation(const string &file);
 
         BaseStationInfo FindInfo(const string &addr, const string &language);
+// export_end        
     };
 
     class IDCInfo {
@@ -274,6 +293,7 @@ namespace ipdb {
         string isp_domain;
         string idc;
     public:
+// export_begin
         explicit IDCInfo(const vector<string> &data, const vector<string> &fields);
 
         string GetCountryName();
@@ -289,13 +309,17 @@ namespace ipdb {
         string GetIDC();
 
         string str();
+// export_end        
     };
 
     class IDC : public Reader {
     public:
+// export_begin    
         explicit IDC(const string &file);
 
         IDCInfo FindInfo(const string &addr, const string &language);
+// export_end          
     };
 }
+
 #endif //IPDB_IPDB_H

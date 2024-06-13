@@ -25,7 +25,20 @@ Copyright (c) 2013-2018 brinkqiang (brink.qiang@gmail.com)
 install cmake
 ## Intro
 luaipdb
-```cpp
+
+win
+```
+build.bat
+cd bin/relwithdebinfo
+chcp 65001
+lua ../script/main.lua
+```
+
+linux
+```
+./build.sh
+cd bin/relwithdebinfo
+./lua ../script/main.lua
 ```
 ## Contacts
 [![Join the chat](https://badges.gitter.im/brinkqiang/luaipdb/Lobby.svg)](https://gitter.im/brinkqiang/luaipdb)
